@@ -131,6 +131,9 @@ class Ntp {
 void vNTP( void * pvParameters ) {
   configASSERT( ( ( uint32_t ) pvParameters ) == 1 );   
   Ntp NTP = Ntp("NTP PROTOCOL INITIATED"); // Instatiate NTP Class
+  while(WiFi.status() != WL_CONNECTED){
+    vTaskDelay(1000/ portTICK_PERIOD_MS);
+  }
   NTP.setup(); // Config NTP
  
  for( ;; ) {  

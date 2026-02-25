@@ -9,7 +9,7 @@
 #define HOST_IP     "localhost"       // REPLACE WITH IP ADDRESS OF SERVER ( IP ADDRESS OF COMPUTER THE BACKEND IS RUNNING ON) 
 #define HOST_PORT   "8080"            // REPLACE WITH SERVER PORT (BACKEND FLASK API PORT)
 #define route       "api/update"      // LEAVE UNCHANGED 
-#define idNumber    "620012345"       // REPLACE WITH YOUR ID NUMBER 
+#define idNumber    "620172489"       // REPLACE WITH YOUR ID NUMBER 
 
 // WIFI CREDENTIALS
 #define SSID        "YOUR WIFI"      // "REPLACE WITH YOUR WIFI's SSID"   

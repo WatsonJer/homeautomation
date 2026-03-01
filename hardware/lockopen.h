@@ -3,7 +3,8 @@
 // Time generated: 30/01/2024 14:03:09
 // Dimensions    : 104x97 pixels
 // Size          : 20,176 Bytes
-
+#pragma once
+#include <Arduino.h>
  
 
 const uint16_t  lockopen[0x2768] PROGMEM ={

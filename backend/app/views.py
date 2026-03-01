@@ -31,7 +31,23 @@ from math import floor
 # 2. CREATE ROUTE FOR '/api/check/combination'
 
 # 3. CREATE ROUTE FOR '/api/update'
-   
+@app.route('/api/update', methods=["POST"])
+def update():
+    if request.method == "POST":
+        try:
+            form =  request.get_json
+            data = escape(form.get("data"))
+            data = data[:-1] + str(time()) + '}'
+            Mqtt.publish(data)
+            result = mongo.update(data)
+
+            if result:
+                return jsonify({"status":"complete", "data":"complete"})
+            
+        except Exception as e:
+            print(f"set_combination error: f{str(e)}")
+
+    return jsonify({"status":"failed", "data":"failed"})  
 # 4. CREATE ROUTE FOR '/api/reserve/<start>/<end>'
 
 # 5. CREATE ROUTE FOR '/api/avg/<start>/<end>'

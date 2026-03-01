@@ -52,6 +52,18 @@ class DB:
     ####################
     
     # 1. CREATE FUNCTION TO INSERT DATA IN TO THE RADAR COLLECTION
+    def update(self,data):
+        try:
+            remotedb 	= self.remoteMongo('mongodb://%s:%s@%s:%s' % (self.username, self.password,self.server,self.port), tls=self.tls)
+            result      = remotedb.ELET2415.radar.insert_one(data)
+
+        except Exception as e:
+            msg = str(e)
+            if "duplicate" not in msg:
+                print("addUpdate error ",msg)
+            return False
+        else:                  
+            return True
 
     
     # 2. CREATE FUNCTION TO RETRIEVE ALL DOCUMENTS FROM RADAR COLLECT BETWEEN SPECIFIED DATE RANGE. MUST RETURN A LIST OF DOCUMENTS

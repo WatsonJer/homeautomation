@@ -329,6 +329,7 @@ void digit1(uint8_t number){
  
 void digit2(uint8_t number){
   // CREATE BOX AND WRITE NUMBER IN THE BOX FOR THE SECOND DIGIT
+  tft.setFont(&FreeSansBold18pt7b);
   int rectX = 65;
   int rectY = 260; 
   int rectWidth = 50; 
@@ -349,6 +350,7 @@ void digit2(uint8_t number){
 }
 
 void digit3(uint8_t number){
+  tft.setFont(&FreeSansBold18pt7b);
   int rectX = 125;
   int rectY = 260; 
   int rectWidth = 50; 
@@ -369,6 +371,7 @@ void digit3(uint8_t number){
 }
 
 void digit4(uint8_t number){
+  tft.setFont(&FreeSansBold18pt7b);
   int rectX = 185;
   int rectY = 260; 
   int rectWidth = 50; 

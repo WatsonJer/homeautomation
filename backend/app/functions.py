@@ -87,7 +87,8 @@ class DB:
             remotedb = self.remoteMongo('mongodb://%s:%s@%s:%s' % (self.username, self.password, self.server, self.port), tls=self.tls)
             result = list(remotedb.ELET2415.radar.aggregate([
             {"$match": {"timestamp": {"$gte": float(start), "$lte": float(end)}}},
-            {"$group": {"_id": None, "avg_reserve": {"$avg": "$reserve"}}}
+            {"$group": {"_id": None, "average": {"$avg": "$reserve"}}},
+            {"$project": {"_id": 0}}
         ]))
         except Exception as e:
             print("avgReserve error:", str(e))

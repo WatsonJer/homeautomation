@@ -114,7 +114,7 @@ def avg_reserve(start, end):
             result = mongo.avgReserve(start, end)
 
             if result and len(result) > 0:
-                avg = result[0]["avg_reserve"]
+                avg = result[0]["average"]
                 return jsonify({"status": "found", "data": avg})
 
         except Exception as e:

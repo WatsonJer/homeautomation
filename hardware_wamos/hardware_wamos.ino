@@ -27,7 +27,8 @@
 
 #define TRIG 4  
 #define ECHO  5 
-#define max 77.763 
+#define maxWaterHeight 77.763
+#define max 198 
 #define cap  1000 
 #define tankHeight 94.5 
 #define diameter 61.5 
@@ -63,7 +64,7 @@ void loop(){
   Serial.println(distance);
   double waterHeight = getWaterHeight(distance);
   double reserve = getReserve(waterHeight);
-  double percentage = (waterHeight / max) * 100;
+  double percentage = (waterHeight / maxWaterHeight) * 100;
   JsonDocument doc; // Create JSon object
       
   // 2. Create message buffer/array to store serialized JSON object

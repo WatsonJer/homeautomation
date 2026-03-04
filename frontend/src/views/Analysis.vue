@@ -41,6 +41,7 @@
             :loading="loading"
             @click="runAnalysis"
           >
+            Submit
           </v-btn>
         </v-sheet>
       </v-col>
@@ -50,7 +51,7 @@
         <v-card
           title="Average"
           subtitle="For the selected period"
-          width="250"
+          width="350"
           height="200"
           variant="elevated"
           color="surface"
@@ -59,7 +60,7 @@
           align="center"
         >
           <v-card-item align="center">
-            <span class="text-h1 text-black">
+            <span class="text-h1 text-black" style="white-space: nowrap">
               {{ avg.value }}
             </span>
             <small>Gal</small>

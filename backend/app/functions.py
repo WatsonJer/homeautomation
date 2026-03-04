@@ -69,7 +69,7 @@ class DB:
     # 2. CREATE FUNCTION TO RETRIEVE ALL DOCUMENTS FROM RADAR COLLECT BETWEEN SPECIFIED DATE RANGE. MUST RETURN A LIST OF DOCUMENTS
     def getReserve(self, start, end):
         try:
-            remotedb = self.remoteMongo('mongodb://%s:%s@%s:%s' % (self.username, self.password, self.server, self.port), tls=self.tls)  # ✅ Add this
+            remotedb = self.remoteMongo('mongodb://%s:%s@%s:%s' % (self.username, self.password, self.server, self.port), tls=self.tls) 
             result = list(remotedb.ELET2415.radar.find(
             {"timestamp": {"$gte": float(start), "$lte": float(end)}},
             {"_id": 0}

@@ -9,6 +9,7 @@
             :max="100"
             color="green"
             track-color="green-lighten-3"
+            track-size="50"
             thumb-color="green-darken-2"
             label=" Height(in)"
           ></v-slider>

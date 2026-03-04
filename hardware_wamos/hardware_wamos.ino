@@ -136,12 +136,7 @@ void espInit(){
 
 //***** Design and implement all util functions below ******
 double getWaterHeight(double distance){
-  double height = tankHeight - distance;
-
-  if(height < 0) height = 0;
-  if (height > max) height = max;
-
-  return height;
+  return tankHeight - distance;
 }
 
 double getReserve(double height){

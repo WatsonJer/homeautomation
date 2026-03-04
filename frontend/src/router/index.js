@@ -14,6 +14,12 @@ const routes = [
     component: () => import("@/views/Control.vue"),
     meta: { transition: "fade" },
   },
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    component: () => import("@/views/Dashboard.vue"),
+    meta: { transition: "fade" },
+  },
 ];
 
 const router = createRouter({

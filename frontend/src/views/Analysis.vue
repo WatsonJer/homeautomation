@@ -41,7 +41,6 @@
             :loading="loading"
             @click="runAnalysis"
           >
-            Analyze
           </v-btn>
         </v-sheet>
       </v-col>
@@ -99,7 +98,7 @@ Exporting(Highcharts);
 // STORES
 const Mqtt = useMqttStore();
 
-// STATE
+// VARIABLES
 const waterMngAnal = ref(null);
 const heightWaterLvl = ref(null);
 const loading = ref(false);
@@ -174,7 +173,7 @@ const CreateCharts = () => {
   });
 };
 
-// UPDATE CHARTS - uses [x, y] array format instead of {x, y} objects
+// UPDATE CHARTS
 const updateLineCharts = (data) => {
   if (!data || data.length === 0) {
     statusText.value = "No records found for selected range.";
@@ -189,7 +188,6 @@ const updateLineCharts = (data) => {
   data.forEach((row) => {
     const tsMs = row.timestamp < 1e12 ? row.timestamp * 1000 : row.timestamp;
 
-    // Use [x, y] array format — more reliable with Highcharts
     reserve.push([tsMs, Number(row.reserve.toFixed(2))]);
 
     if (row.waterheight != null && row.radar != null) {
@@ -227,7 +225,6 @@ const runAnalysis = async () => {
   statusText.value = "Loading data...";
 
   try {
-    // FIX: Call API directly instead of going through the store
     const [reserveResult, avgResult] = await Promise.all([
       fetchApiJson(`/api/reserve/${startDate}/${endDate}`),
       fetchApiJson(`/api/avg/${startDate}/${endDate}`),
@@ -240,10 +237,8 @@ const runAnalysis = async () => {
       updateLineCharts([]);
     }
 
-    // FIX: Flexible average extraction — handles varying API response shapes
     if (avgResult.ok && avgResult.payload?.status === "found") {
       const raw = avgResult.payload.data;
-      // data may be a number directly, or an object with an average field
       const parsed =
         typeof raw === "number"
           ? raw

@@ -63,7 +63,7 @@ void loop(){
   Serial.println(distance);
   double waterHeight = getWaterHeight(distance);
   double reserve = getReserve(waterHeight);
-  double percentage = waterHeight / max * 100;
+  double percentage = (waterHeight / max) * 100;
   JsonDocument doc; // Create JSon object
       
   // 2. Create message buffer/array to store serialized JSON object
@@ -136,7 +136,12 @@ void espInit(){
 
 //***** Design and implement all util functions below ******
 double getWaterHeight(double distance){
-  return tankHeight - distance + 16.737;
+  double height = tankHeight - distance;
+
+  if(height < 0) height = 0;
+  if (height > max) height = max;
+
+  return height;
 }
 
 double getReserve(double height){
